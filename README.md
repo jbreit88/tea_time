@@ -1,24 +1,92 @@
-# README
+<!-- Maybe add a photo here -->
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Mod4 Solo Project: Tea Time
 
-Things you may want to cover:
+reference: [Project Specs and Overview](https://mod4.turing.edu/projects/take_home/)
 
-* Ruby version
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <ul>
+      <li><a href="#versions">Versions</a></li>
+      <li><a href="#dependencies">Dependencies</a></li>
+      <li><a href="#set-up">Setup Repo</a></li>
+      <li><a href="#project-description">Project Description</a></li>
+    </ul>
+    <!-- Available Endpoints and Examples -->
+    <li>
+      <details>
+        <summary><a href="#available-endpoints-and-examples">Available Endpoints and Examples</a></summary>
+        <ul>
+          <li><a href="#first-endpoint">First Endpoint Goes Here</a></li>
+        </ul>
+      </details>
+    </li>
+    <li><a href="built-by">Built By</a></li>
+  </ol>
+</details>
+  
 
-* System dependencies
+----------
 
-* Configuration
+## Getting Started
 
-* Database creation
+### Versions
 
-* Database initialization
+- Ruby 2.7.2
+- Rails 5.2.7
 
-* How to run the test suite
+----------
 
-* Services (job queues, cache servers, search engines, etc.)
+### Dependencies
 
-* Deployment instructions
+- Testing: [rspec-rails](https://github.com/rspec/rspec-rails), [simplecov](https://github.com/simplecov-ruby/simplecov), [factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails), [faker](https://github.com/vajradog/faker-rails), [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
 
-* ...
+- API: [jsonapi-serializer](https://github.com/fotinakis/jsonapi-serializers), [figaro](https://medium.com/@MinimalGhost/the-figaro-gem-an-easier-way-to-securely-configure-rails-applications-c6f963b7e993), [faraday](https://github.com/lostisland/faraday)
+
+- Linting: [rubocop](https://github.com/rubocop/rubocop)
+
+----------
+
+### Set Up
+On your local system, open a terminal session to run the following commands:
+1. Clone this repository `$ git clone git@github.com:jbreit88/tea_time.git`
+2. Navigate to the newly cloned directory `$ cd tea_time`
+3. If bundler is not installed onm your local machine run `$ gem install bundler`
+4. If or after bundler is installed run `$ bundle install` to install the required Gems
+5. If errors occur, check for proper installation and versions of `bundler`, `ruby`, and `rails`
+6. Set up the database locally with `$ rails db:{:drop,:create,:migrate,:seed}`
+7. Open your text editor and check to see that `schema.rb` exists
+8. You may also run the RSpec test suite locally with the command `$ bundle exec rspec` to ensure everything is functioning as expected.
+
+----------
+
+## Project Description
+
+This is a back-end project designed to implement the skills necessary to build and expose an API for a front-end team to consume.
+
+----------
+
+## Available Endpoints and Examples
+<!-- Add static postman collection here when created -->
+
+###  first endpoint
+
+| http verb | name | description | example |
+| --- | --- | --- | --- |
+| GET | /backgrounds | Returns information to call an image based on keyword search | /api/v1/backgrounds?location={{city,state}} 
+
+<details>
+    <summary> JSON response example </summary>
+
+Function of endpoint goes here:
+```json
+  json response goes here
+
+```
+</details>
+
+----------
+
+## Built By
