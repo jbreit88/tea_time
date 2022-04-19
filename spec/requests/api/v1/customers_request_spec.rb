@@ -4,7 +4,9 @@ require 'rails_helper'
 
 RSpec.describe 'Customers API' do
   describe 'GET /customers/:id' do
-    let(:customer) { Customer.create!(first_name: 'Barty', last_name: 'Crouch', email: 'b@crouch.com', address: 'Hogwarts I think') }
+    let(:customer) do
+      Customer.create!(first_name: 'Barty', last_name: 'Crouch', email: 'b@crouch.com', address: 'Hogwarts I think')
+    end
     describe 'happy path' do
       it 'returns a customer and their associated information' do
         tea = Tea.create!(title: 'Jasmine', description: 'This is tea', temperature: 100, brew_time: 180)
