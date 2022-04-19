@@ -21,6 +21,7 @@ reference: [Project Specs and Overview](https://mod4.turing.edu/projects/take_ho
         <ul>
           <li><a href="#create-customer">Create Customer</a></li>
           <li><a href="#create-tea">Create Tea</a></li>
+           <li><a href="#create-subscription">Create Subscription</a></li>
         </ul>
       </details>
     </li>
@@ -72,7 +73,7 @@ This is a back-end project designed to implement the skills necessary to build a
 ## Available Endpoints and Examples
 <!-- Add static postman collection here when created -->
 
-###  Create Customer
+### Create Customer
 
 | http verb | name | description | example |
 | --- | --- | --- | --- |
@@ -81,7 +82,7 @@ This is a back-end project designed to implement the skills necessary to build a
 <details>
     <summary> JSON response example </summary>
 
-Create User:
+Create Customer:
 ```json
   {
     "data": {
@@ -98,7 +99,7 @@ Create User:
 ```
 </details>
 
-###  Create Tea
+### Create Tea
 
 | http verb | name | description | example |
 | --- | --- | --- | --- |
@@ -107,7 +108,7 @@ Create User:
 <details>
     <summary> JSON response example </summary>
 
-Create User:
+Create Tea:
 ```json
   {
     "data": {
@@ -118,6 +119,50 @@ Create User:
             "description": "A very fine tea",
             "temperature": 120,
             "brew_time": 180
+        }
+    }
+}
+```
+</details>
+
+### Create Subscription
+
+| http verb | name | description | example |
+| --- | --- | --- | --- |
+| POST | /subscriptions | Returns newly created subscription, customer info, and tea info as JSON object. | /subscriptions?title=Jasmine Galore&price=1500&customer_id=1&tea_id=1&frequency=weekly 
+
+<details>
+    <summary> JSON response example </summary>
+
+Create Subscription:
+```json
+{
+    "data": {
+        "id": "3",
+        "type": "subscription",
+        "attributes": {
+            "title": "Jasmine Galore",
+            "price": 1500,
+            "status": "active",
+            "frequency": "weekly",
+            "customer": {
+                "id": 1,
+                "first_name": "Mel",
+                "last_name": "Gibson",
+                "email": "mel@gibson.com",
+                "address": "1234 Hollywood St., Los Angeles, CA, 11111",
+                "created_at": "2022-04-18T22:28:04.415Z",
+                "updated_at": "2022-04-18T22:28:04.415Z"
+            },
+            "tea": {
+                "id": 1,
+                "title": "Earl Grey",
+                "description": "This tea is delicious. Full of caffeine. Good for waking up in the morning.",
+                "temperature": 180,
+                "brew_time": 180,
+                "created_at": "2022-04-18T22:28:04.424Z",
+                "updated_at": "2022-04-18T22:28:04.424Z"
+            }
         }
     }
 }
