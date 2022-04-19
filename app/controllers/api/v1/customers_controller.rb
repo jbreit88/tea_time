@@ -3,6 +3,12 @@
 module Api
   module V1
     class CustomersController < ApplicationController
+      def show
+        customer = Customer.find(params[:id])
+
+        render json: CustomerAndSubscriptionsSerializer.new(customer)
+      end
+
       def create
         customer = Customer.find_or_create_by!(customer_params)
         render json: CustomerSerializer.new(customer), status: 201
