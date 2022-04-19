@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :customers, only: [:create]
       resources :teas, only: [:create]
       resources :subscriptions, only: [:create]
+      patch '/subscriptions', to: 'subscriptions#update'
     end
   end
 end

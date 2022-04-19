@@ -12,6 +12,16 @@ module Api
         render json: SubscriptionSerializer.new(subscription), status: 201
       end
 
+      def update
+        subscription = Subscription.find(params[:id])
+
+        if subscription.update(subscription_params)
+          render json: SubscriptionSerializer.new(subscription), status: 202
+        else
+          render_error_400('Subscription not created.')
+        end
+      end
+
       private
 
       def subscription_params
