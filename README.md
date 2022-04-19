@@ -75,7 +75,7 @@ This is a back-end project designed to implement the skills necessary to build a
 ----------
 
 ## Available Endpoints and Examples
-<!-- Add static postman collection here when created -->
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/9fa9703c55f79369189c?action=collection%2Fimport)
 
 ### Create Customer
 
