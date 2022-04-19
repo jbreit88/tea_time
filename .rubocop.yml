@@ -5,3 +5,12 @@ Style/Documentation:
 
 Style/MixinUsage:
   Enabled: false
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']
+
+AllCops:
+  Exclude:
+    - '/spec/factories/*.rb'
+    - 'spec/models/*.rb'
+    - 'spec/requests/*.rb'
