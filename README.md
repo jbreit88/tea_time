@@ -20,6 +20,7 @@ reference: [Project Specs and Overview](https://mod4.turing.edu/projects/take_ho
         <summary><a href="#available-endpoints-and-examples">Available Endpoints and Examples</a></summary>
         <ul>
           <li><a href="#create-customer">Create Customer</a></li>
+          <li><a href="#create-tea">Create Tea</a></li>
         </ul>
       </details>
     </li>
@@ -75,7 +76,7 @@ This is a back-end project designed to implement the skills necessary to build a
 
 | http verb | name | description | example |
 | --- | --- | --- | --- |
-| POST | /customers | Returns newly created user as JSON object. If user already exists, returns existing user. | /customers?first_name=Meredith&last_name=otwaldG&email=merry@gotty.edu&address=1234 Merry Gotty St. Boulder CO 80304 
+| POST | /customers | Returns newly created customer as JSON object. If customer already exists, returns existing customer. | /customers?first_name=Meredith&last_name=otwaldG&email=merry@gotty.edu&address=1234 Merry Gotty St. Boulder CO 80304 
 
 <details>
     <summary> JSON response example </summary>
@@ -91,6 +92,32 @@ Create User:
             "last_name": "Gotwald",
             "email": "merry@gotty.edu",
             "address": "1234 Merry Gotty St. Boulder CO 80304"
+        }
+    }
+}
+```
+</details>
+
+###  Create Tea
+
+| http verb | name | description | example |
+| --- | --- | --- | --- |
+| POST | /teas | Returns newly created tea as JSON object. If tea already exists, returns existing tea. | /teas?title=Jasmine&description=A very fine tea&temperature=120&brew_time=180 
+
+<details>
+    <summary> JSON response example </summary>
+
+Create User:
+```json
+  {
+    "data": {
+        "id": "2",
+        "type": "tea",
+        "attributes": {
+            "title": "Jasmine",
+            "description": "A very fine tea",
+            "temperature": 120,
+            "brew_time": 180
         }
     }
 }
