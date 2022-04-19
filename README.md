@@ -20,6 +20,7 @@ reference: [Project Specs and Overview](https://mod4.turing.edu/projects/take_ho
         <summary><a href="#available-endpoints-and-examples">Available Endpoints and Examples</a></summary>
         <ul>
           <li><a href="#create-customer">Create Customer</a></li>
+          <li><a href="#show-customer">Show Customer Info and Subscriptions</a></li>
           <li><a href="#create-tea">Create Tea</a></li>
           <li><a href="#create-subscription">Create Subscription</a></li>
           <li><a href="#update-subscription">Update Subscription</a></li>
@@ -101,6 +102,68 @@ Create Customer:
 }
 ```
 </details>
+
+### Show Customer
+
+| http verb | name | description | example |
+| --- | --- | --- | --- |
+| GET | /customers/:id | Returns customer info and associated subscriptions as JSON object. | /customers/1
+
+<details>
+    <summary> JSON response example </summary>
+
+Show Customer:
+```json
+ {
+    "data": {
+        "id": "1",
+        "type": "customer_and_subscriptions",
+        "attributes": {
+            "first_name": "Mel",
+            "last_name": "Gibson",
+            "email": "mel@gibson.com",
+            "address": "1234 Hollywood St., Los Angeles, CA, 11111",
+            "subscriptions": [
+                {
+                    "id": 1,
+                    "title": "Jasmine Galore",
+                    "price": 1500,
+                    "status": "cancelled",
+                    "frequency": "weekly",
+                    "customer_id": 1,
+                    "tea_id": 1,
+                    "created_at": "2022-04-19T17:11:40.734Z",
+                    "updated_at": "2022-04-19T19:59:27.638Z"
+                },
+                {
+                    "id": 2,
+                    "title": "Jasmine Galore",
+                    "price": 1500,
+                    "status": "active",
+                    "frequency": "weekly",
+                    "customer_id": 1,
+                    "tea_id": 1,
+                    "created_at": "2022-04-19T17:18:40.329Z",
+                    "updated_at": "2022-04-19T17:18:40.329Z"
+                },
+                {
+                    "id": 3,
+                    "title": "Jasmine Galore",
+                    "price": 1500,
+                    "status": "active",
+                    "frequency": "weekly",
+                    "customer_id": 1,
+                    "tea_id": 1,
+                    "created_at": "2022-04-19T17:19:27.973Z",
+                    "updated_at": "2022-04-19T17:19:27.973Z"
+                }
+            ]
+        }
+    }
+}
+```
+</details>
+
 
 ### Create Tea
 
