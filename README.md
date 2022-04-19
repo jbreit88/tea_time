@@ -21,7 +21,8 @@ reference: [Project Specs and Overview](https://mod4.turing.edu/projects/take_ho
         <ul>
           <li><a href="#create-customer">Create Customer</a></li>
           <li><a href="#create-tea">Create Tea</a></li>
-           <li><a href="#create-subscription">Create Subscription</a></li>
+          <li><a href="#create-subscription">Create Subscription</a></li>
+          <li><a href="#update-subscription">Update Subscription</a></li>
         </ul>
       </details>
     </li>
@@ -67,6 +68,8 @@ On your local system, open a terminal session to run the following commands:
 ## Project Description
 
 This is a back-end project designed to implement the skills necessary to build and expose an API for a front-end team to consume.
+
+![Screen Shot 2022-04-18 at 1 33 03 PM](https://user-images.githubusercontent.com/88853324/164088610-90a08833-1d99-45f2-83aa-9a918ed88f3d.png)
 
 ----------
 
@@ -144,6 +147,51 @@ Create Subscription:
             "title": "Jasmine Galore",
             "price": 1500,
             "status": "active",
+            "frequency": "weekly",
+            "customer": {
+                "id": 1,
+                "first_name": "Mel",
+                "last_name": "Gibson",
+                "email": "mel@gibson.com",
+                "address": "1234 Hollywood St., Los Angeles, CA, 11111",
+                "created_at": "2022-04-18T22:28:04.415Z",
+                "updated_at": "2022-04-18T22:28:04.415Z"
+            },
+            "tea": {
+                "id": 1,
+                "title": "Earl Grey",
+                "description": "This tea is delicious. Full of caffeine. Good for waking up in the morning.",
+                "temperature": 180,
+                "brew_time": 180,
+                "created_at": "2022-04-18T22:28:04.424Z",
+                "updated_at": "2022-04-18T22:28:04.424Z"
+            }
+        }
+    }
+}
+```
+</details>
+
+### Update Subscription
+
+| http verb | name | description | example |
+| --- | --- | --- | --- |
+| PATCH | /subscriptions | Returns updated subscription info as JSON object. | /subscriptions?id=1&status=cancelled
+
+- Note: You can use this endpoint to update any attributes for a Subscription as outlined in the database schema. Simply add them as params after the subscription ID (IE: `?id=1&title=Changed Title&price=1399@frequency=monthly`)
+<details>
+    <summary> JSON response example </summary>
+
+Update Subscription:
+```json
+{
+    "data": {
+        "id": "1",
+        "type": "subscription",
+        "attributes": {
+            "title": "Jasmine Galore",
+            "price": 1500,
+            "status": "cancelled",
             "frequency": "weekly",
             "customer": {
                 "id": 1,
