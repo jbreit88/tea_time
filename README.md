@@ -19,7 +19,11 @@ reference: [Project Specs and Overview](https://mod4.turing.edu/projects/take_ho
       <details>
         <summary><a href="#available-endpoints-and-examples">Available Endpoints and Examples</a></summary>
         <ul>
-          <li><a href="#first-endpoint">First Endpoint Goes Here</a></li>
+          <li><a href="#create-customer">Create Customer</a></li>
+          <li><a href="#show-customer">Show Customer Info and Subscriptions</a></li>
+          <li><a href="#create-tea">Create Tea</a></li>
+          <li><a href="#create-subscription">Create Subscription</a></li>
+          <li><a href="#update-subscription">Update Subscription</a></li>
         </ul>
       </details>
     </li>
@@ -66,24 +70,213 @@ On your local system, open a terminal session to run the following commands:
 
 This is a back-end project designed to implement the skills necessary to build and expose an API for a front-end team to consume.
 
+![Screen Shot 2022-04-18 at 1 33 03 PM](https://user-images.githubusercontent.com/88853324/164088610-90a08833-1d99-45f2-83aa-9a918ed88f3d.png)
+
 ----------
 
 ## Available Endpoints and Examples
 <!-- Add static postman collection here when created -->
 
-###  first endpoint
+### Create Customer
 
 | http verb | name | description | example |
 | --- | --- | --- | --- |
-| GET | /backgrounds | Returns information to call an image based on keyword search | /api/v1/backgrounds?location={{city,state}} 
+| POST | /customers | Returns newly created customer as JSON object. If customer already exists, returns existing customer. | /customers?first_name=Meredith&last_name=otwaldG&email=merry@gotty.edu&address=1234 Merry Gotty St. Boulder CO 80304 
 
 <details>
     <summary> JSON response example </summary>
 
-Function of endpoint goes here:
+Create Customer:
 ```json
-  json response goes here
+  {
+    "data": {
+        "id": "2",
+        "type": "customer",
+        "attributes": {
+            "first_name": "Meredith",
+            "last_name": "Gotwald",
+            "email": "merry@gotty.edu",
+            "address": "1234 Merry Gotty St. Boulder CO 80304"
+        }
+    }
+}
+```
+</details>
 
+### Show Customer
+
+| http verb | name | description | example |
+| --- | --- | --- | --- |
+| GET | /customers/:id | Returns customer info and associated subscriptions as JSON object. | /customers/1
+
+<details>
+    <summary> JSON response example </summary>
+
+Show Customer:
+```json
+ {
+    "data": {
+        "id": "1",
+        "type": "customer_and_subscriptions",
+        "attributes": {
+            "first_name": "Mel",
+            "last_name": "Gibson",
+            "email": "mel@gibson.com",
+            "address": "1234 Hollywood St., Los Angeles, CA, 11111",
+            "subscriptions": [
+                {
+                    "id": 1,
+                    "title": "Jasmine Galore",
+                    "price": 1500,
+                    "status": "cancelled",
+                    "frequency": "weekly",
+                    "customer_id": 1,
+                    "tea_id": 1,
+                    "created_at": "2022-04-19T17:11:40.734Z",
+                    "updated_at": "2022-04-19T19:59:27.638Z"
+                },
+                {
+                    "id": 2,
+                    "title": "Jasmine Galore",
+                    "price": 1500,
+                    "status": "active",
+                    "frequency": "weekly",
+                    "customer_id": 1,
+                    "tea_id": 1,
+                    "created_at": "2022-04-19T17:18:40.329Z",
+                    "updated_at": "2022-04-19T17:18:40.329Z"
+                },
+                {
+                    "id": 3,
+                    "title": "Jasmine Galore",
+                    "price": 1500,
+                    "status": "active",
+                    "frequency": "weekly",
+                    "customer_id": 1,
+                    "tea_id": 1,
+                    "created_at": "2022-04-19T17:19:27.973Z",
+                    "updated_at": "2022-04-19T17:19:27.973Z"
+                }
+            ]
+        }
+    }
+}
+```
+</details>
+
+
+### Create Tea
+
+| http verb | name | description | example |
+| --- | --- | --- | --- |
+| POST | /teas | Returns newly created tea as JSON object. If tea already exists, returns existing tea. | /teas?title=Jasmine&description=A very fine tea&temperature=120&brew_time=180 
+
+<details>
+    <summary> JSON response example </summary>
+
+Create Tea:
+```json
+  {
+    "data": {
+        "id": "2",
+        "type": "tea",
+        "attributes": {
+            "title": "Jasmine",
+            "description": "A very fine tea",
+            "temperature": 120,
+            "brew_time": 180
+        }
+    }
+}
+```
+</details>
+
+### Create Subscription
+
+| http verb | name | description | example |
+| --- | --- | --- | --- |
+| POST | /subscriptions | Returns newly created subscription, customer info, and tea info as JSON object. | /subscriptions?title=Jasmine Galore&price=1500&customer_id=1&tea_id=1&frequency=weekly 
+
+<details>
+    <summary> JSON response example </summary>
+
+Create Subscription:
+```json
+{
+    "data": {
+        "id": "3",
+        "type": "subscription",
+        "attributes": {
+            "title": "Jasmine Galore",
+            "price": 1500,
+            "status": "active",
+            "frequency": "weekly",
+            "customer": {
+                "id": 1,
+                "first_name": "Mel",
+                "last_name": "Gibson",
+                "email": "mel@gibson.com",
+                "address": "1234 Hollywood St., Los Angeles, CA, 11111",
+                "created_at": "2022-04-18T22:28:04.415Z",
+                "updated_at": "2022-04-18T22:28:04.415Z"
+            },
+            "tea": {
+                "id": 1,
+                "title": "Earl Grey",
+                "description": "This tea is delicious. Full of caffeine. Good for waking up in the morning.",
+                "temperature": 180,
+                "brew_time": 180,
+                "created_at": "2022-04-18T22:28:04.424Z",
+                "updated_at": "2022-04-18T22:28:04.424Z"
+            }
+        }
+    }
+}
+```
+</details>
+
+### Update Subscription
+
+| http verb | name | description | example |
+| --- | --- | --- | --- |
+| PATCH | /subscriptions | Returns updated subscription info as JSON object. | /subscriptions?id=1&status=cancelled
+
+- Note: You can use this endpoint to update any attributes for a Subscription as outlined in the database schema. Simply add them as params after the subscription ID (IE: `?id=1&title=Changed Title&price=1399@frequency=monthly`)
+<details>
+    <summary> JSON response example </summary>
+
+Update Subscription:
+```json
+{
+    "data": {
+        "id": "1",
+        "type": "subscription",
+        "attributes": {
+            "title": "Jasmine Galore",
+            "price": 1500,
+            "status": "cancelled",
+            "frequency": "weekly",
+            "customer": {
+                "id": 1,
+                "first_name": "Mel",
+                "last_name": "Gibson",
+                "email": "mel@gibson.com",
+                "address": "1234 Hollywood St., Los Angeles, CA, 11111",
+                "created_at": "2022-04-18T22:28:04.415Z",
+                "updated_at": "2022-04-18T22:28:04.415Z"
+            },
+            "tea": {
+                "id": 1,
+                "title": "Earl Grey",
+                "description": "This tea is delicious. Full of caffeine. Good for waking up in the morning.",
+                "temperature": 180,
+                "brew_time": 180,
+                "created_at": "2022-04-18T22:28:04.424Z",
+                "updated_at": "2022-04-18T22:28:04.424Z"
+            }
+        }
+    }
+}
 ```
 </details>
 
