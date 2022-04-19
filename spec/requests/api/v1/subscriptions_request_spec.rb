@@ -121,12 +121,18 @@ RSpec.describe 'Subscriptions API' do
   end
 
   describe 'PATCH /subscriptions' do
-    let!(:customer) { Customer.create!(first_name: 'Margaret', last_name: 'Thatcher', email: 'm@t.com', address: 'I live here st, boulder, co 80506') }
-    let!(:tea) { Tea.create!(title: 'Teas Please', description: 'This is a fine tea.', temperature: 120, brew_time: 180) }
+    let!(:customer) do
+      Customer.create!(first_name: 'Margaret', last_name: 'Thatcher', email: 'm@t.com',
+                       address: 'I live here st, boulder, co 80506')
+    end
+    let!(:tea) do
+      Tea.create!(title: 'Teas Please', description: 'This is a fine tea.', temperature: 120, brew_time: 180)
+    end
 
     describe 'happy path' do
       it 'returns an updated subscription object' do
-        subscription = Subscription.create!(title: 'Teas for Days', price: 1799, status: 'active', frequency: 'monthly', customer_id: customer.id, tea_id: tea.id)
+        subscription = Subscription.create!(title: 'Teas for Days', price: 1799, status: 'active',
+                                            frequency: 'monthly', customer_id: customer.id, tea_id: tea.id)
 
         expect(subscription.status).to eq('active')
 
@@ -146,7 +152,8 @@ RSpec.describe 'Subscriptions API' do
 
     describe 'sad path' do
       it 'returns an error when no invalid id is passed' do
-        subscription = Subscription.create!(title: 'Teas for Days', price: 1799, status: 'active', frequency: 'monthly', customer_id: customer.id, tea_id: tea.id)
+        subscription = Subscription.create!(title: 'Teas for Days', price: 1799, status: 'active',
+                                            frequency: 'monthly', customer_id: customer.id, tea_id: tea.id)
 
         expect(subscription.status).to eq('active')
 
@@ -162,7 +169,8 @@ RSpec.describe 'Subscriptions API' do
       end
 
       it 'ignores attributes that are not assigned to the subscription' do
-        subscription = Subscription.create!(title: 'Teas for Days', price: 1799, status: 'active', frequency: 'monthly', customer_id: customer.id, tea_id: tea.id)
+        subscription = Subscription.create!(title: 'Teas for Days', price: 1799, status: 'active',
+                                            frequency: 'monthly', customer_id: customer.id, tea_id: tea.id)
 
         expect(subscription.status).to eq('active')
 
