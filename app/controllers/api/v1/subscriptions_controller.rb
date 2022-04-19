@@ -1,16 +1,22 @@
-class Api::V1::SubscriptionsController < ApplicationController
-  def create
-    customer = Customer.find(params[:customer_id])
-    tea = Tea.find(params[:tea_id])
+# frozen_string_literal: true
 
-    subscription = customer.subscriptions.create!(subscription_params)
+module Api
+  module V1
+    class SubscriptionsController < ApplicationController
+      def create
+        customer = Customer.find(params[:customer_id])
+        tea = Tea.find(params[:tea_id])
 
-    render json: SubscriptionSerializer.new(subscription), status: 201
-  end
+        subscription = customer.subscriptions.create!(subscription_params)
 
-  private
+        render json: SubscriptionSerializer.new(subscription), status: 201
+      end
 
-  def subscription_params
-    params.permit(:title, :price, :status, :frequency, :customer_id, :tea_id)
+      private
+
+      def subscription_params
+        params.permit(:title, :price, :status, :frequency, :customer_id, :tea_id)
+      end
+    end
   end
 end

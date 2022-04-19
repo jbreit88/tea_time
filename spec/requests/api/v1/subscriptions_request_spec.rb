@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Subscriptions API' do
@@ -92,7 +94,7 @@ RSpec.describe 'Subscriptions API' do
           title: 'Teas Please',
           description: 'This is a fine tea',
           frequency: 'weekly',
-          customer_id: 1,
+          customer_id: 1
         }
 
         post '/api/v1/subscriptions', params: subscription_params
@@ -100,7 +102,6 @@ RSpec.describe 'Subscriptions API' do
         expect(response.status).to eq(404)
         expect(response.body).to match(/Couldn't find Tea/)
       end
-
 
       it 'sends a 404 error when tea_id is invalid' do
         subscription_params = {

@@ -1,14 +1,11 @@
+# frozen_string_literal: true
+
 class SubscriptionSerializer
   include JSONAPI::Serializer
 
   attributes :title, :price, :status, :frequency
 
-  attribute :customer do |object|
-    object.customer
-  end
+  attribute :customer, &:customer
 
-  attribute :tea do |object|
-    object.tea
-  end
-
+  attribute :tea, &:tea
 end
