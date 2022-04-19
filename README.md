@@ -19,7 +19,7 @@ reference: [Project Specs and Overview](https://mod4.turing.edu/projects/take_ho
       <details>
         <summary><a href="#available-endpoints-and-examples">Available Endpoints and Examples</a></summary>
         <ul>
-          <li><a href="#first-endpoint">First Endpoint Goes Here</a></li>
+          <li><a href="#create-customer">Create Customer</a></li>
         </ul>
       </details>
     </li>
@@ -71,19 +71,29 @@ This is a back-end project designed to implement the skills necessary to build a
 ## Available Endpoints and Examples
 <!-- Add static postman collection here when created -->
 
-###  first endpoint
+###  Create Customer
 
 | http verb | name | description | example |
 | --- | --- | --- | --- |
-| GET | /backgrounds | Returns information to call an image based on keyword search | /api/v1/backgrounds?location={{city,state}} 
+| POST | /customers | Returns newly created user as JSON object. If user already exists, returns existing user. | /customers?first_name=Meredith&last_name=otwaldG&email=merry@gotty.edu&address=1234 Merry Gotty St. Boulder CO 80304 
 
 <details>
     <summary> JSON response example </summary>
 
-Function of endpoint goes here:
+Create User:
 ```json
-  json response goes here
-
+  {
+    "data": {
+        "id": "2",
+        "type": "customer",
+        "attributes": {
+            "first_name": "Meredith",
+            "last_name": "Gotwald",
+            "email": "merry@gotty.edu",
+            "address": "1234 Merry Gotty St. Boulder CO 80304"
+        }
+    }
+}
 ```
 </details>
 
