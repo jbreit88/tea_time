@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Customers API' do
@@ -49,7 +51,7 @@ RSpec.describe 'Customers API' do
         post '/api/v1/customers', params: customer_params
 
         customer = JSON.parse(response.body, symbolize_names: true)
-        
+
         expect(response.status).to eq(201)
         expect(customer[:data][:attributes]).to_not have_key(:non_permitted_attribute)
       end

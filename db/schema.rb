@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,42 +12,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_18_201753) do
-
+ActiveRecord::Schema.define(version: 20_220_418_201_753) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "customers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'customers', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'email'
+    t.string 'address'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "subscriptions", force: :cascade do |t|
-    t.string "title"
-    t.integer "price"
-    t.integer "status", default: 0
-    t.integer "frequency"
-    t.bigint "customer_id"
-    t.bigint "tea_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_subscriptions_on_customer_id"
-    t.index ["tea_id"], name: "index_subscriptions_on_tea_id"
+  create_table 'subscriptions', force: :cascade do |t|
+    t.string 'title'
+    t.integer 'price'
+    t.integer 'status', default: 0
+    t.integer 'frequency'
+    t.bigint 'customer_id'
+    t.bigint 'tea_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['customer_id'], name: 'index_subscriptions_on_customer_id'
+    t.index ['tea_id'], name: 'index_subscriptions_on_tea_id'
   end
 
-  create_table "teas", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.integer "temperature"
-    t.integer "brew_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'teas', force: :cascade do |t|
+    t.string 'title'
+    t.text 'description'
+    t.integer 'temperature'
+    t.integer 'brew_time'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "subscriptions", "customers", on_delete: :cascade
-  add_foreign_key "subscriptions", "teas"
+  add_foreign_key 'subscriptions', 'customers', on_delete: :cascade
+  add_foreign_key 'subscriptions', 'teas'
 end
