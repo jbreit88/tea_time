@@ -282,4 +282,11 @@ Update Subscription:
 
 ----------
 
-## Built By
+## Built By: Brad Breiten 
+Please feel free to checkout my profiles:
+<ul>
+  <li><a href="https://github.com/jbreit88">GitHub Profile</a></li>
+  <li><a href="https://www.linkedin.com/in/jbradfordbreiten/">LinkedIn</a></li>
+  <li><a href="https://jbreit88.github.io/resume/">Resume</a></li>
+  <li><a href="https://terminal.turing.edu/profiles/1235">Terminal Profile</a></li>
+</ul>
