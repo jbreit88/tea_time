@@ -27,7 +27,7 @@ reference: [Project Specs and Overview](https://mod4.turing.edu/projects/take_ho
         </ul>
       </details>
     </li>
-    <li><a href="built-by">Built By</a></li>
+    <li><a href="#built-by-brad-breiten">Built By</a></li>
   </ol>
 </details>
   
